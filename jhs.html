@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中学校カレンダー (JHS Only)</title>
+    <style>
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #f4f6f8; margin: 0; padding: 12px; display: flex; flex-direction: column; align-items: center; }
+        .top-bar { width: 100%; max-width: 1000px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; background: #ffffff; padding: 12px 20px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .calendar-header-title { font-size: 22px; font-weight: bold; color: #d97706; white-space: nowrap; }
+        .nav-links a { color: #d97706; text-decoration: none; font-weight: bold; margin-left: 12px; font-size: 13px; }
+        .calendar-container { width: 100%; max-width: 1000px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 16px; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+        .day-name { background-color: #d97706; color: white; text-align: center; padding: 10px 0; font-weight: bold; border-radius: 6px; font-size: 13px; }
+        .day-box { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; min-height: 100px; padding: 6px; display: flex; flex-direction: column; gap: 4px; }
+        .day-box.empty { background-color: #f1f5f9; border: 1px dashed #cbd5e1; }
+        .day-number { font-weight: bold; font-size: 13px; color: #475569; }
+        .day-box.today { background-color: #fef3c7; border: 2px solid #d97706; }
+        .event-box { font-size: 11px; line-height: 1.35; padding: 6px 8px; border-radius: 5px; color: #ffffff; background-color: #d97706; word-break: break-all; }
+        @media (max-width: 600px) {
+            .top-bar { flex-direction: column; gap: 8px; text-align: center; }
+            .calendar-grid { gap: 4px; }
+            .day-box { min-height: 85px; padding: 4px; }
+            .event-box { font-size: 10px; padding: 4px; }
+        }
+    </style>
+</head>
+<body>
 
+<div class="top-bar">
+    <div class="calendar-header-title" id="calendarTitle">中学校カレンダー</div>
+    <div class="nav-links">
+        <a href="index.html">全体表示</a>
+        <a href="elem.html">小学校</a>
+    </div>
+</div>
+
+<div class="calendar-container">
+    <div class="calendar-grid" id="calendarGrid">
+        <div class="day-name">月 (Pon)</div>
+        <div class="day-name">火 (Wt)</div>
+        <div class="day-name">水 (Śr)</div>
+        <div class="day-name">木 (Czw)</div>
+        <div class="day-name">金 (Pt)</div>
+    </div>
+</div>
+
+<script>
+    const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/TWOJ_USERNAME/TWOJE_REPO/main/events.json';
+
+    async function loadAndRender() {
+        let eventsData = {};
+        try {
+            const res = await fetch(GITHUB_JSON_URL + '?t=' + new Date().getTime());
+            if (res.ok) eventsData = await res.json();
+        } catch (e) {}
+
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = now.getMonth();
+        const monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        document.getElementById('calendarTitle').innerText = `${year}年 ${monthNames[month]} (中学校)`;
+
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const totalDays = lastDay.getDate();
+
+        const grid = document.getElementById('calendarGrid');
+        while (grid.children.length > 5) grid.removeChild(grid.lastChild);
+
+        let firstDayOfWeek = firstDay.getDay();
+        let emptyBoxesCount = (firstDayOfWeek >= 1 && firstDayOfWeek <= 5) ? firstDayOfWeek - 1 : 0;
+
+        for (let i = 0; i < emptyBoxesCount; i++) {
+            const emptyBox = document.createElement('div');
+            emptyBox.className = 'day-box empty';
+            grid.appendChild(emptyBox);
+        }
+
+        for (let day = 1; day <= totalDays; day++) {
+            const currentDate = new Date(year, month, day);
+            if (currentDate.getDay() === 0 || currentDate.getDay() === 6) continue;
+
+            const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            const dayBox = document.createElement('div');
+            dayBox.className = 'day-box';
+            if (day === now.getDate()) dayBox.classList.add('today');
+
+            const dayNumber = document.createElement('div');
+            dayNumber.className = 'day-number';
+            dayNumber.innerText = day;
+            dayBox.appendChild(dayNumber);
+
+            const event = eventsData[dateKey];
+            // FILTR: Wyświetla tylko wydarzenia z kategorii "jhs" (中学校)
+            if (event && event.text && event.category === 'jhs') {
+                const eventDiv = document.createElement('div');
+                eventDiv.className = 'event-box';
+                eventDiv.innerText = event.text;
+                dayBox.appendChild(eventDiv);
+            }
+
+            grid.appendChild(dayBox);
+        }
+    }
+
+    loadAndRender();
+</script>
+</body>
+</html>
