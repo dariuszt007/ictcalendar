@@ -1,8 +1,8 @@
 {
   "2026-10-19": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-21": {
     "text": "吹田南小学校",
@@ -51,47 +51,57 @@
   },
   "2026-10-20": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-01": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-08": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-05": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-06": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-13": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-15": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-29": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
   },
   "2026-10-27": {
     "text": "青山台中学校",
-    "category": "elem",
-    "color": "#2563eb"
+    "category": "custom",
+    "color": "#3c071b"
+  },
+  "2026-10-14": {
+    "text": "研修",
+    "category": "custom",
+    "color": "#0056d6"
+  },
+  "2026-10-23": {
+    "text": "休み",
+    "category": "off",
+    "color": "#dc2626"
   }
 }
