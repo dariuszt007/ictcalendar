@@ -678,5 +678,10 @@
     "endTime": "17:00",
     "category": "custom",
     "color": "#0061fd"
+  },
+  "2026-12-25": {
+    "text": "休み",
+    "category": "off",
+    "color": "#dc2626"
   }
 }
