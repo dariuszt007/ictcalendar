@@ -31,6 +31,12 @@
 
 <div class="top-bar">
     <div class="calendar-header-title" id="calendarTitle">小学校カレンダー</div>
+    <div class="calendar-nav-area">
+        <button class="btn-nav" onclick="changeMonth(-1)">◀</button>
+        <button class="btn-today-nav" onclick="goToday()">今月</button>
+        <button class="btn-nav" onclick="changeMonth(1)">▶</button>
+        <div class="calendar-header-title" id="calendarTitle"></div>
+    </div>
     <!--<div class="nav-links">
         <a href="index.html">全体表示</a>
         <a href="jhs.html">中学校</a>
