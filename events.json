@@ -683,5 +683,50 @@
     "text": "休み",
     "category": "off",
     "color": "#dc2626"
+  },
+  "2027-02-01": {
+    "text": "待機日",
+    "location": "",
+    "isAllDay": true,
+    "startTime": "",
+    "endTime": "",
+    "category": "custom",
+    "color": "#d357fe"
+  },
+  "2027-02-02": {
+    "text": "青山台中学校",
+    "location": "北千里駅",
+    "isAllDay": false,
+    "startTime": "08:30",
+    "endTime": "17:00",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2027-02-04": {
+    "text": "青山台中学校",
+    "location": "北千里駅",
+    "isAllDay": false,
+    "startTime": "08:30",
+    "endTime": "17:00",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2027-02-03": {
+    "text": "吹田南小学校",
+    "location": "江坂駅",
+    "isAllDay": false,
+    "startTime": "08:30",
+    "endTime": "17:00",
+    "category": "elem",
+    "color": "#16a34a"
+  },
+  "2027-02-05": {
+    "text": "吹田南小学校",
+    "location": "江坂駅",
+    "isAllDay": false,
+    "startTime": "08:30",
+    "endTime": "17:00",
+    "category": "elem",
+    "color": "#16a34a"
   }
 }
