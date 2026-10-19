@@ -1043,5 +1043,50 @@
     "endTime": "17:00",
     "category": "elem",
     "color": "#16a34a"
+  },
+  "2027-01-04": {
+    "text": "冬休み",
+    "location": "",
+    "isAllDay": true,
+    "startTime": "",
+    "endTime": "",
+    "category": "custom",
+    "color": "#fdc700"
+  },
+  "2026-12-28": {
+    "text": "冬休み",
+    "location": "",
+    "isAllDay": true,
+    "startTime": "",
+    "endTime": "",
+    "category": "custom",
+    "color": "#fdc700"
+  },
+  "2026-12-29": {
+    "text": "冬休み",
+    "location": "",
+    "isAllDay": true,
+    "startTime": "",
+    "endTime": "",
+    "category": "custom",
+    "color": "#fdc700"
+  },
+  "2026-12-30": {
+    "text": "冬休み",
+    "location": "",
+    "isAllDay": true,
+    "startTime": "",
+    "endTime": "",
+    "category": "custom",
+    "color": "#fdc700"
+  },
+  "2026-12-31": {
+    "text": "冬休み",
+    "location": "",
+    "isAllDay": true,
+    "startTime": "",
+    "endTime": "",
+    "category": "custom",
+    "color": "#fdc700"
   }
 }
