@@ -9,20 +9,15 @@
     "category": "elem",
     "color": "#16a34a"
   },
-  "2026-10-05": {
-    "text": "吹田南小学校　江坂駅",
-    "category": "elem",
-    "color": "#16a34a"
-  },
   "2026-10-06": {
     "text": "青山台中学校　北千里駅",
     "category": "jhs",
     "color": "#d97706"
   },
   "2026-10-07": {
-    "text": "研修（教育センター）",
-    "category": "trg",
-    "color": "#0061fd"
+    "text": "吹田南小学校　江坂駅",
+    "category": "elem",
+    "color": "#16a34a"
   },
   "2026-10-08": {
     "text": "青山台中学校　北千里駅",
@@ -33,5 +28,80 @@
     "text": "吹田南小学校　江坂駅",
     "category": "elem",
     "color": "#16a34a"
+  },
+  "2026-10-16": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "elem",
+    "color": "#16a34a"
+  },
+  "2026-10-21": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "elem",
+    "color": "#16a34a"
+  },
+  "2026-10-22": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "elem",
+    "color": "#16a34a"
+  },
+  "2026-10-26": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "elem",
+    "color": "#16a34a"
+  },
+  "2026-10-28": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "elem",
+    "color": "#16a34a"
+  },
+  "2026-10-30": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "elem",
+    "color": "#16a34a"
+  },
+  "2026-10-05": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-13": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-15": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-19": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-20": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-27": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-29": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-14": {
+    "text": "研修",
+    "category": "elem",
+    "color": "#0061fd"
+  },
+  "2026-10-23": {
+    "text": "休み",
+    "category": "off",
+    "color": "#dc2626"
   }
 }
