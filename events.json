@@ -1,9 +1,37 @@
 {
-  "2026-10-01": { "text": "青山台中学校　北千里駅", "category": "jhs", "color": "#d97706" },
-  "2026-10-02": { "text": "吹田南小学校　江坂駅", "category": "elem", "color": "#2563eb" },
-  "2026-10-05": { "text": "吹田南小学校　江坂駅", "category": "elem", "color": "#2563eb" },
-  "2026-10-06": { "text": "青山台中学校　北千里駅", "category": "jhs", "color": "#d97706" },
-  "2026-10-07": { "text": "研修（教育センター）", "category": "trg", "color": "#16a34a" },
-  "2026-10-08": { "text": "青山台中学校　北千里駅", "category": "jhs", "color": "#d97706" },
-  "2026-10-09": { "text": "吹田南小学校　江坂駅", "category": "elem", "color": "#2563eb" }
+  "2026-10-01": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-02": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "custom",
+    "color": "#669d34"
+  },
+  "2026-10-05": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "custom",
+    "color": "#669d34"
+  },
+  "2026-10-06": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-07": {
+    "text": "研修（教育センター）",
+    "category": "custom",
+    "color": "#0061fe"
+  },
+  "2026-10-08": {
+    "text": "青山台中学校　北千里駅",
+    "category": "jhs",
+    "color": "#d97706"
+  },
+  "2026-10-09": {
+    "text": "吹田南小学校　江坂駅",
+    "category": "custom",
+    "color": "#669d34"
+  }
 }
