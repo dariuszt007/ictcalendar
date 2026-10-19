@@ -1,1 +1,223 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中学校カレンダー</title>
+    <style>
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background-color: #f4f6f8; margin: 0; padding: 12px; display: flex; flex-direction: column; align-items: center; }
+        
+        .top-bar { 
+            width: 100%; 
+            max-width: 1000px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 12px; 
+            background: #ffffff; 
+            padding: 12px 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
+            gap: 10px;
+        }
 
+        .calendar-nav-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .calendar-header-title { font-size: 20px; font-weight: bold; color: #1e293b; white-space: nowrap; }
+        
+        .btn-nav {
+            background-color: #e2e8f0;
+            color: #334155;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn-nav:hover { background-color: #cbd5e1; }
+
+        .btn-today-nav {
+            background-color: #f1f5f9;
+            color: #2563eb;
+            border: 1px solid #cbd5e1;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .btn-today-nav:hover { background-color: #e2e8f0; }
+
+        .nav-links a { color: #2563eb; text-decoration: none; font-weight: bold; margin-left: 12px; font-size: 13px; white-space: nowrap; }
+        .nav-links a:hover { text-decoration: underline; }
+
+        .calendar-container { width: 100%; max-width: 1000px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); padding: 16px; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+        .day-name { background-color: #334155; color: white; text-align: center; padding: 10px 0; font-weight: bold; border-radius: 6px; font-size: 13px; }
+        
+        .day-box { background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; min-height: 100px; padding: 6px; display: flex; flex-direction: column; gap: 4px; }
+        .day-box.empty { background-color: #f1f5f9; border: 1px dashed #cbd5e1; }
+        .day-number { font-weight: bold; font-size: 13px; color: #475569; }
+        .day-box.today { background-color: #eff6ff; border: 2px solid #2563eb; }
+        .day-box.today .day-number { color: #2563eb; }
+        
+        .event-box { font-size: 11px; line-height: 1.35; padding: 6px 8px; border-radius: 5px; word-break: break-all; box-shadow: 0 1px 3px rgba(0,0,0,0.1); border: 1px solid #cbd5e1; }
+        .event-title { font-weight: 600; }
+        .event-location { font-size: 10px; opacity: 0.9; margin-top: 2px; }
+
+        @media (max-width: 600px) {
+            .top-bar { flex-direction: column; gap: 10px; align-items: stretch; }
+            .calendar-nav-area { justify-content: space-between; }
+            .nav-links { display: flex; justify-content: flex-end; }
+            .calendar-grid { gap: 4px; }
+            .day-box { min-height: 85px; padding: 4px; }
+            .event-box { font-size: 10px; padding: 4px; }
+            .event-location { font-size: 9px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="calendar-nav-area">
+        <button class="btn-nav" onclick="changeMonth(-1)">◀ 前月</button>
+        <button class="btn-today-nav" onclick="goToday()">今月</button>
+        <button class="btn-nav" onclick="changeMonth(1)">次月 ▶</button>
+        <div class="calendar-header-title" id="calendarTitle"></div>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">全体表示</a>
+        <a href="elem.html">小学校</a>
+        <a href="admin.html">管理者</a>
+    </div>
+</div>
+
+<div class="calendar-container">
+    <div class="calendar-grid" id="calendarGrid">
+        <div class="day-name">月 (Pon)</div>
+        <div class="day-name">火 (Wt)</div>
+        <div class="day-name">水 (Śr)</div>
+        <div class="day-name">木 (Czw)</div>
+        <div class="day-name">金 (Pt)</div>
+    </div>
+</div>
+
+<script>
+    const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/dariuszt007/ictcalendar/main/events.json';
+    const DEFAULT_COLOR = '#d97706';
+
+    let eventsData = {};
+    let displayedYear = new Date().getFullYear();
+    let displayedMonth = new Date().getMonth();
+
+    function changeMonth(direction) {
+        displayedMonth += direction;
+        if (displayedMonth > 11) {
+            displayedMonth = 0;
+            displayedYear++;
+        } else if (displayedMonth < 0) {
+            displayedMonth = 11;
+            displayedYear--;
+        }
+        renderCalendar();
+    }
+
+    function goToday() {
+        const now = new Date();
+        displayedYear = now.getFullYear();
+        displayedMonth = now.getMonth();
+        renderCalendar();
+    }
+
+    async function loadEventsAndRender() {
+        try {
+            const res = await fetch(GITHUB_JSON_URL + '?t=' + new Date().getTime());
+            if (res.ok) eventsData = await res.json();
+        } catch (e) { console.warn("Pobieranie JSON nieudane", e); }
+        goToday();
+    }
+
+    function renderCalendar() {
+        const now = new Date();
+        const year = displayedYear;
+        const month = displayedMonth;
+        const monthNames = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+        document.getElementById('calendarTitle').innerText = `${year}年 ${monthNames[month]} (中学校)`;
+
+        const firstDay = new Date(year, month, 1);
+        const lastDay = new Date(year, month + 1, 0);
+        const totalDays = lastDay.getDate();
+
+        const grid = document.getElementById('calendarGrid');
+        while (grid.children.length > 5) grid.removeChild(grid.lastChild);
+
+        let firstDayOfWeek = firstDay.getDay();
+        let emptyBoxesCount = (firstDayOfWeek >= 1 && firstDayOfWeek <= 5) ? firstDayOfWeek - 1 : 0;
+
+        for (let i = 0; i < emptyBoxesCount; i++) {
+            const emptyBox = document.createElement('div');
+            emptyBox.className = 'day-box empty';
+            grid.appendChild(emptyBox);
+        }
+
+        for (let day = 1; day <= totalDays; day++) {
+            const currentDate = new Date(year, month, day);
+            const dayOfWeek = currentDate.getDay();
+            if (dayOfWeek === 0 || dayOfWeek === 6) continue;
+
+            const dateKey = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+            const dayBox = document.createElement('div');
+            dayBox.className = 'day-box';
+            if (day === now.getDate() && month === now.getMonth() && year === now.getFullYear()) {
+                dayBox.classList.add('today');
+            }
+
+            const dayNumber = document.createElement('div');
+            dayNumber.className = 'day-number';
+            dayNumber.innerText = day;
+            dayBox.appendChild(dayNumber);
+
+            const event = eventsData[dateKey];
+            if (event && event.text && (event.category === 'jhs' || event.text.includes('中学校'))) {
+                const eventDiv = document.createElement('div');
+                eventDiv.className = 'event-box';
+                
+                const bgColor = event.color !== undefined && event.color !== '' ? event.color : DEFAULT_COLOR;
+                eventDiv.style.backgroundColor = bgColor;
+                
+                if (bgColor.toLowerCase() === '#ffffff' || bgColor.toLowerCase() === 'white') {
+                    eventDiv.style.color = '#1e293b';
+                } else {
+                    eventDiv.style.color = '#ffffff';
+                }
+
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'event-title';
+                titleDiv.innerText = event.text;
+                eventDiv.appendChild(titleDiv);
+
+                if (event.location && event.location.trim() !== '') {
+                    const locDiv = document.createElement('div');
+                    locDiv.className = 'event-location';
+                    locDiv.innerText = `📍 ${event.location}`;
+                    eventDiv.appendChild(locDiv);
+                }
+
+                dayBox.appendChild(eventDiv);
+            }
+
+            grid.appendChild(dayBox);
+        }
+    }
+
+    loadEventsAndRender();
+</script>
+</body>
+</html>
