@@ -1088,14 +1088,5 @@
     "endTime": "",
     "category": "custom",
     "color": "#fdc700"
-  },
-  "2026-10-12": {
-    "text": "Test",
-    "location": "",
-    "isAllDay": true,
-    "startTime": "",
-    "endTime": "",
-    "category": "oth",
-    "color": "#9333ea"
   }
 }
