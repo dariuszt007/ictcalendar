@@ -168,6 +168,9 @@
             .event-box { font-size: 10px; padding: 4px; }
             .event-location { font-size: 9px; }
         }
+
+<!--TUTAJ_2-->
+        
     </style>
 </head>
 <body>
@@ -283,6 +286,13 @@
             </div>
         </div>
 
+
+
+        <!-- TUTAJ_1-->
+
+
+
+        
         <div class="modal-buttons">
             <button class="btn-delete" id="btnDelete" onclick="askDeleteScope()">削除</button>
             <button class="btn-duplicate" id="btnDuplicate" onclick="prepareDuplicate()">複製 (Duplikuj)</button>
@@ -579,6 +589,9 @@
         document.getElementById('btnDelete').style.display = event ? 'block' : 'none';
         document.getElementById('btnDuplicate').style.display = event ? 'block' : 'none';
         document.getElementById('eventModal').classList.add('active');
+        <! TUTAJ_3-->
+
+        
     }
 
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
@@ -610,16 +623,19 @@
         const endTime = document.getElementById('modalEndTime').value;
         const category = document.getElementById('modalCategory').value;
         const color = document.getElementById('modalColor').value;
+        <!--TUTAJ_4-->
+
+        
 
         if (text) {
             if (scope === 'all' && originalEventText) {
                 for (const key in eventsData) {
                     if (eventsData[key].text === originalEventText || eventsData[key].text === text) {
-                        eventsData[key] = { text, location, isAllDay, startTime, endTime, category, color };
+                        eventsData[key] = { text, location, note, isAllDay, startTime, endTime, category, color };
                     }
                 }
             } else {
-                eventsData[currentEditDate] = { text, location, isAllDay, startTime, endTime, category, color };
+                eventsData[currentEditDate] = { text, location, note, isAllDay, startTime, endTime, category, color };
             }
         } else {
             delete eventsData[currentEditDate];
