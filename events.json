@@ -266,13 +266,13 @@
     "color": "#d97706"
   },
   "2026-12-03": {
-    "text": "青山台中学校",
-    "location": "北千里駅",
+    "text": "吹田南小学校",
+    "location": "江坂駅",
     "isAllDay": false,
     "startTime": "08:30",
     "endTime": "17:00",
-    "category": "jhs",
-    "color": "#d97706"
+    "category": "custom",
+    "color": "#16a34a"
   },
   "2026-12-08": {
     "text": "青山台中学校",
