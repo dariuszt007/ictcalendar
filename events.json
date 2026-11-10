@@ -829,13 +829,13 @@
     "color": "#d357fe"
   },
   "2027-02-08": {
-    "text": "待機日",
-    "location": "堺筋本町駅",
+    "text": "青山台中学校",
+    "location": "北千里駅",
     "isAllDay": false,
     "startTime": "08:30",
     "endTime": "17:00",
-    "category": "custom",
-    "color": "#d357fe"
+    "category": "jhs",
+    "color": "#d97706"
   },
   "2027-02-10": {
     "text": "研修",
