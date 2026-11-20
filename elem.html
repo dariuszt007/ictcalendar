@@ -80,6 +80,24 @@
             .event-box { font-size: 10px; padding: 4px; }
             .event-location { font-size: 9px; }
         }
+        .month-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.month-control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.month-help {
+    font-size: 11px;
+    color: #64748b;
+}
+
     </style>
 </head>
 <body>
@@ -89,14 +107,30 @@
         <button class="btn-nav" onclick="changeMonth(-1)">◀</button>
         <button class="btn-today-nav" onclick="goToday()">今月</button>
         <button class="btn-nav" onclick="changeMonth(1)">▶</button>
-        <div class="calendar-header-title" id="calendarTitle"></div>アレクサンダー
+        <div class="calendar-header-title" id="calendarTitle"></div>
     </div>
+    
     <!--<div class="nav-links">
         <a href="index.html">全体表示</a>
         <a href="jhs.html">中学校</a>
         <a href="admin.html">管理者</a>
     </div>-->
 </div>
+    
+<div class="calendar-nav-area">
+    <div class="month-controls">
+        <div class="month-control-buttons">
+            <button class="btn-nav" onclick="changeMonth(-1)">◀</button>
+            <button class="btn-today-nav" onclick="goToday()">今月</button>
+            <button class="btn-nav" onclick="changeMonth(1)">▶</button>
+        </div>
+        <small class="month-help">Tutaj wpisz swój tekst</small>
+    </div>
+
+    <div class="calendar-header-title" id="calendarTitle"></div>
+</div>
+
+    
 
 <div class="calendar-container">
     <div class="calendar-grid" id="calendarGrid">
