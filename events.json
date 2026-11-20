@@ -292,15 +292,6 @@
     "category": "jhs",
     "color": "#d97706"
   },
-  "2026-12-14": {
-    "text": "青山台中学校",
-    "location": "北千里駅",
-    "isAllDay": false,
-    "startTime": "08:30",
-    "endTime": "17:00",
-    "category": "jhs",
-    "color": "#d97706"
-  },
   "2026-12-15": {
     "text": "青山台中学校",
     "location": "北千里駅",
@@ -819,15 +810,6 @@
     "category": "elem",
     "color": "#16a34a"
   },
-  "2027-02-22": {
-    "text": "待機日",
-    "location": "堺筋本町駅",
-    "isAllDay": false,
-    "startTime": "08:30",
-    "endTime": "17:00",
-    "category": "custom",
-    "color": "#d357fe"
-  },
   "2027-02-08": {
     "text": "青山台中学校",
     "location": "北千里駅",
@@ -1088,5 +1070,23 @@
     "endTime": "",
     "category": "custom",
     "color": "#fdc700"
+  },
+  "2026-12-14": {
+    "text": "健康診断　待機日",
+    "location": "堺筋本町駅",
+    "isAllDay": false,
+    "startTime": "08:30",
+    "endTime": "17:00",
+    "category": "custom",
+    "color": "#01c7fc"
+  },
+  "2027-02-22": {
+    "text": "青山台中学校",
+    "location": "北千里駅",
+    "isAllDay": false,
+    "startTime": "08:30",
+    "endTime": "17:00",
+    "category": "jhs",
+    "color": "#d97706"
   }
 }
